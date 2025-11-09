@@ -1,19 +1,39 @@
 # upgraded-goggles
 
-Google Gemini 2.0 Flash AI project - Development setup and configuration
+A Google Gemini 2.0 Flash AI-powered web application with interactive frontend and Python backend integration.
 
 ## Overview
 
-This repository contains a project configured for development with Google Gemini 2.0 Flash, Google's advanced AI model for multimodal understanding and generation.
+This project demonstrates integration with Google's Gemini 2.0 Flash AI model, featuring:
+- **Frontend**: Interactive web interface (HTML/CSS/JavaScript) deployed on Netlify/Vercel
+- **Backend**: Python API configuration for Gemini AI integration
+- **Deployment**: Ready-to-deploy configuration for web hosting
+
+## Project Structure
+
+```
+upgraded-goggles/
+├── index.html/         # Frontend web application
+├── gemini_config.py    # Python Gemini API configuration
+├── requirements.txt    # Python dependencies
+├── .env.example        # Environment variables template
+├── netlify.toml        # Netlify deployment config
+├── vercel.json         # Vercel deployment config
+├── .gitignore          # Git ignore rules
+└── README-FRONTEND.md  # Frontend-specific documentation
+```
 
 ## Prerequisites
 
-- Python 3.9 or higher
-- pip (Python package manager)
-- Google Cloud account with Gemini API access
-- API key for Google AI Studio or Vertex AI
+- **Frontend**: Modern web browser
+- **Backend**: 
+  - Python 3.9 or higher
+  - Google Cloud account with Gemini API access
+  - API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
 
-## Installation
+## Setup Instructions
+
+### Frontend Setup
 
 1. Clone the repository:
 ```bash
@@ -21,83 +41,82 @@ git clone https://github.com/zencripts-official/upgraded-goggles.git
 cd upgraded-goggles
 ```
 
-2. Create a virtual environment:
+2. Open `index.html` in a web browser or deploy to Netlify/Vercel:
+```bash
+# For local development
+open index.html/index.html
+
+# Or deploy to Netlify (automatic with netlify.toml)
+# Or deploy to Vercel (automatic with vercel.json)
+```
+
+### Backend Setup
+
+1. Create a virtual environment:
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-3. Install required dependencies:
+2. Install dependencies:
 ```bash
-pip install google-generativeai
-pip install python-dotenv
+pip install -r requirements.txt
 ```
 
-## Configuration
-
-1. Create a `.env` file in the root directory:
+3. Configure environment variables:
 ```bash
-GEMINI_API_KEY=your_api_key_here
+cp .env.example .env
+# Edit .env and add your GEMINI_API_KEY
 ```
 
-2. Set up your API key:
-   - Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
-   - Generate an API key
-   - Add it to your `.env` file
-
-## Usage
-
+4. Use the Gemini configuration:
 ```python
 import google.generativeai as genai
-import os
 from dotenv import load_dotenv
+import os
 
-# Load environment variables
 load_dotenv()
-
-# Configure the API
 genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
-
-# Initialize Gemini 2.0 Flash model
 model = genai.GenerativeModel('gemini-2.0-flash')
 
-# Generate content
 response = model.generate_content('Your prompt here')
 print(response.text)
 ```
 
 ## Features
 
-- ✨ Multimodal AI capabilities (text, images, audio, video)
-- 🚀 Fast inference with Flash architecture
+- ✨ Interactive web interface for AI interactions
+- 🚀 Google Gemini 2.0 Flash multimodal AI capabilities
 - 💡 Advanced reasoning and problem-solving
-- 🔧 Easy-to-use Python SDK
-- 📦 Pre-configured development environment
+- 🔧 Easy deployment to Netlify or Vercel
+- 📦 Pre-configured Python backend integration
+- 🎨 Responsive frontend design
 
-## Project Structure
+## Deployment
 
-```
-upgraded-goggles/
-├── .gitignore          # Python gitignore template
-├── README.md           # This file
-├── .env.example        # Example environment variables
-└── src/                # Source code directory
-```
+### Netlify
+- Push to GitHub and connect repository to Netlify
+- Configuration is handled by `netlify.toml`
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is open source and available under the MIT License.
+### Vercel
+- Push to GitHub and connect repository to Vercel
+- Configuration is handled by `vercel.json`
 
 ## Resources
 
 - [Google Gemini API Documentation](https://ai.google.dev/docs)
 - [Gemini 2.0 Flash Overview](https://deepmind.google/technologies/gemini/)
 - [Python SDK Reference](https://ai.google.dev/api/python)
+- [Frontend Documentation](./README-FRONTEND.md)
+
+## Contributing
+
+Contributions are welcome! Please submit a Pull Request with your improvements.
+
+## License
+
+MIT License - Open source and free to use.
 
 ## Support
 
-For issues, questions, or contributions, please open an issue in this repository.
+For issues or questions, please open an issue in this repository.
